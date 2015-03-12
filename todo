@@ -1,0 +1,18 @@
+mapfileFS
+
+a fuse userspace filesystem to store a mapfile in the postgres db and provide
+filesystem access to it for mapserver
+
+
+database trigers should mark the cache as expired when the data changes,
+
+when a mapfile is opened for reading first check for a cache, if found, then
+check if expired, if not found or expired, read a new one from the db
+
+cache is a search tree of mapfile id's
+each cache being a node of its own
+
+
+keep track of total cache and put a limit on it, then delete old caches as needed
+
+
